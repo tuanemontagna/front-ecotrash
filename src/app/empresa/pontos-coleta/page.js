@@ -248,6 +248,7 @@ const CardPontoColeta = ({ ponto, onEdit, onToggleStatus, onDelete }) => {
               <Button
                 leftIcon={<MdEdit />}
                 size="sm"
+                color="#48742c"
                 colorScheme="blue"
                 variant="outline"
                 flex={1}
@@ -258,6 +259,7 @@ const CardPontoColeta = ({ ponto, onEdit, onToggleStatus, onDelete }) => {
               <Button
                 leftIcon={ponto.ativo ? <MdToggleOff /> : <MdToggleOn />}
                 size="sm"
+                color="#48742c"
                 colorScheme={ponto.ativo ? "red" : "green"}
                 variant="outline"
                 flex={1}
@@ -269,6 +271,7 @@ const CardPontoColeta = ({ ponto, onEdit, onToggleStatus, onDelete }) => {
             <Button
               leftIcon={<MdDelete />}
               size="sm"
+              color="#48742c"
               colorScheme="red"
               variant="ghost"
               w="full"
@@ -498,6 +501,7 @@ const ModalPontoColeta = ({ isOpen, onClose, ponto, onSave, isEdit = false }) =>
                 onChange={(e) => setFormData(prev => ({ ...prev, descricao: e.target.value }))}
                 placeholder="Descrição detalhada do ponto de coleta"
                 rows={3}
+                bg="white"
                 style={{
                   width: "100%",
                   padding: "8px 12px",
@@ -820,6 +824,7 @@ export default function PaginaPontosColetaEmpresa() {
                     <Input
                       placeholder="Nome, endereço ou cidade..."
                       value={filtros.busca}
+                      bg="white"
                       onChange={(e) => setFiltros(prev => ({ ...prev, busca: e.target.value }))}
                       variant="unstyled"
                       flex={1}

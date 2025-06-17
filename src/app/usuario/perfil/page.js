@@ -11,7 +11,6 @@ import {
   HStack,
   Input,
   SimpleGrid,
-  InputGroup
 } from "@chakra-ui/react";
 import {PasswordInput} from "@/components/ui/password-input"
 import { IoMdArrowBack } from "react-icons/io";
@@ -28,8 +27,6 @@ import {
   MdHelp,
   MdLogout,
   MdEco,
-  MdVisibility,
-  MdVisibilityOff,
   MdLock
 } from "react-icons/md";
 import { FaAward, FaTrophy } from "react-icons/fa";

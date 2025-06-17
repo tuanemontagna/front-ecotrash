@@ -11,7 +11,6 @@ import {
   IconButton,
   SimpleGrid,
   Input,
-  Image
 } from "@chakra-ui/react";
 import { Tooltip } from "@/components/ui/tooltip"
 import { IoMdArrowBack } from "react-icons/io";
@@ -273,7 +272,7 @@ export default function PaginaPontosColeta() {
   };
 
   const tratarIrParaPerfil = () => {
-    roteador.push("/perfil");
+    roteador.push("/usuario/perfil");
   };
 
   const tratarVerRota = (ponto) => {

@@ -1,6 +1,5 @@
 "use client";
 import { Box, Flex, Text, Button, SimpleGrid, VStack, Icon, Image, Container, Heading, HStack, IconButton } from "@chakra-ui/react";
-import { FaMapMarkerAlt, FaCalendarAlt, FaInfoCircle, FaAward, FaRecycle, FaLeaf, FaGlobe } from "react-icons/fa";
 import { FaHouseCircleCheck, FaLocationDot } from "react-icons/fa6";
 import { GrArticle } from "react-icons/gr";
 import { BsAwardFill } from "react-icons/bs";
@@ -16,7 +15,7 @@ export default function Home() {
   };
 
   const handleProfileNavigation = () => {
-    router.push("/perfil");
+    router.push("/usuario/perfil");
   };
 
   return (
@@ -44,7 +43,7 @@ export default function Home() {
           <Flex direction={{ base: "column", lg: "row" }} align="center" justify="space-between" gap={8}>
             <VStack align={{ base: "center", lg: "flex-start" }} spacing={6} flex="1">
               <Image
-                src="images/ecotrash.png"
+                src="/images/ecotrash.png"
                 alt="EcoTrash Logo"
                 height={{ base: "60px", md: "80px" }}
                 objectFit="contain"
@@ -71,7 +70,7 @@ export default function Home() {
             </VStack>
             <Box flex="1" display="flex" justifyContent="center">
               <Image
-                src="images/logo.png"
+                src="/images/logo.png"
                 alt="Reciclagem"
                 boxSize={{ base: "200px", md: "300px", lg: "350px" }}
                 objectFit="contain"
@@ -103,7 +102,7 @@ export default function Home() {
               transition="all 0.3s ease"
               _hover={{ transform: "translateY(-8px)", boxShadow: "2xl" }}
               cursor="pointer"
-              onClick={() => handleNavigation("/pontos-coleta")}
+              onClick={() => handleNavigation("/usuario/pontos-coleta")}
             >
               <Box
                 bg="linear-gradient(135deg, #48742c 0%, #5d8f3a 100%)"
@@ -129,7 +128,7 @@ export default function Home() {
               transition="all 0.3s ease"
               _hover={{ transform: "translateY(-8px)", boxShadow: "2xl" }}
               cursor="pointer"
-              onClick={() => handleNavigation("/coletas")}
+              onClick={() => handleNavigation("/usuario/coletas")}
             >
               <Box
                 bg="linear-gradient(135deg, #48742c 0%, #5d8f3a 100%)"
@@ -155,7 +154,7 @@ export default function Home() {
               transition="all 0.3s ease"
               _hover={{ transform: "translateY(-8px)", boxShadow: "2xl" }}
               cursor="pointer"
-              onClick={() => handleNavigation("/informacoes")}
+              onClick={() => handleNavigation("/information")}
             >
               <Box
                 bg="linear-gradient(135deg, #48742c 0%, #5d8f3a 100%)"
@@ -181,7 +180,7 @@ export default function Home() {
               transition="all 0.3s ease"
               _hover={{ transform: "translateY(-8px)", boxShadow: "2xl" }}
               cursor="pointer"
-              onClick={() => handleNavigation("/recompensas")}
+              onClick={() => handleNavigation("/usuario/recompensas")}
             >
               <Box
                 bg="linear-gradient(135deg, #48742c 0%, #5d8f3a 100%)"
@@ -337,7 +336,7 @@ export default function Home() {
               borderRadius="full"
               _hover={{ transform: "translateY(-2px)", boxShadow: "lg" }}
               leftIcon={<FaHouseCircleCheck />}
-              onClick={() => handleNavigation("/coletas")}
+              onClick={() => handleNavigation("/usuario/coletas")}
             >
               Agendar Primeira Coleta
             </Button>
@@ -351,7 +350,7 @@ export default function Home() {
               borderRadius="full"
               _hover={{ bg: "#48742c", color: "white", transform: "translateY(-2px)" }}
               leftIcon={<FaLocationDot />}
-              onClick={() => handleNavigation("/pontos-coleta")}
+              onClick={() => handleNavigation("/usuario/pontos-coleta")}
             >
               Encontrar Pontos
             </Button>
@@ -364,7 +363,7 @@ export default function Home() {
         <Container maxW="container.xl">
           <VStack spacing={4}>
             <Image
-              src="images/ecotrash.png"
+              src="/images/ecotrash.png"
               alt="EcoTrash Logo"
               height="40px"
               filter="brightness(0) invert(1)"

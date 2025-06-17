@@ -1,10 +1,10 @@
 "use client";
-import { Box, Flex, Text, Button, SimpleGrid, VStack, Icon, Image, Container, Heading, HStack, IconButton } from "@chakra-ui/react";
-import { FaMapMarkerAlt, FaCalendarAlt, FaInfoCircle, FaBuilding, FaRecycle, FaLeaf, FaGlobe, FaChartLine } from "react-icons/fa";
-import { FaHouseCircleCheck, FaLocationDot, FaTruck } from "react-icons/fa6";
+import { Box, Flex, Text, SimpleGrid, VStack, Icon, Image, Container, Heading, IconButton } from "@chakra-ui/react";
+import { FaLeaf } from "react-icons/fa";
+import { FaLocationDot, FaTruck } from "react-icons/fa6";
 import { GrArticle } from "react-icons/gr";
-import { BsAwardFill, BsGraphUp } from "react-icons/bs";
-import { MdEco, MdGroups, MdTrendingUp, MdBusinessCenter, MdInventory, MdAnalytics } from "react-icons/md";
+import { BsGraphUp } from "react-icons/bs";
+import { MdBusinessCenter } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { useRouter } from "next/navigation";
 

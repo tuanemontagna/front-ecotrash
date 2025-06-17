@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { IoMdArrowBack } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
-import { MdStars, MdRedeem, MdHistory, MdEco, MdLocalOffer, MdCheckCircle, MdWarning, MdClose } from "react-icons/md";
+import { MdStars, MdRedeem, MdHistory, MdCheckCircle, MdWarning, MdClose } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -92,7 +92,7 @@ export default function PaginaRecompensas() {
   };
 
   const tratarIrParaPerfil = () => {
-    roteador.push("/perfil");
+    roteador.push("/usuario/perfil");
   };
 
   const abrirModalResgate = (recompensa) => {

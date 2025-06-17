@@ -8,19 +8,16 @@ import {
   Heading,
   Container,
   IconButton,
-  Alert,
-  Stack,
   HStack,
   Input,
   SimpleGrid
 } from "@chakra-ui/react";
 import { IoMdArrowBack } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
-import { MdAddCircleOutline, MdCalendarToday, MdOutlineInfo, MdLocationOn, MdSchedule, MdRecycling, MdBusiness, MdClose, MdSave } from "react-icons/md";
+import { MdAddCircleOutline, MdCalendarToday, MdOutlineInfo, MdLocationOn, MdSchedule, MdRecycling, MdBusiness, MdClose, MdSave, MdCancel } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-// Mock data for scheduled collections
 const coletasAgendadasMock = [
   {
     id: 1,
@@ -74,13 +71,12 @@ export default function PaginaColetas() {
   };
 
   const tratarIrParaPerfil = () => {
-    roteador.push("/perfil");
+    roteador.push("/usuario/perfil");
   };
 
   const tratarAgendarNovaColeta = () => {
     setMostrarFormulario(!mostrarFormulario);
     if (mostrarFormulario) {
-      // Reset form when closing
       setDadosFormulario({
         data: "",
         horario: "",
@@ -106,14 +102,12 @@ export default function PaginaColetas() {
   };
 
   const tratarSubmissaoFormulario = () => {
-    // Validate form
     if (!dadosFormulario.data || !dadosFormulario.horario || !dadosFormulario.local || 
         dadosFormulario.materiais.length === 0 || !dadosFormulario.empresa) {
       showToastMessage("Por favor, preencha todos os campos obrigatórios.", "error");
       return;
     }
 
-    // Create new collection
     const novaColeta = {
       id: coletas.length + 1,
       data: dadosFormulario.data,
@@ -124,10 +118,8 @@ export default function PaginaColetas() {
       empresa: dadosFormulario.empresa
     };
 
-    // Add to collections list
     setColetas(prev => [...prev, novaColeta]);
     
-    // Reset form and hide it
     setDadosFormulario({
       data: "",
       horario: "",
@@ -149,6 +141,15 @@ export default function PaginaColetas() {
     }));
   };
 
+  const tratarCancelarColeta = (idDaColeta) => {
+    setColetas(coletasAtuais => 
+      coletasAtuais.map(coleta => 
+        coleta.id === idDaColeta ? { ...coleta, status: "Cancelada" } : coleta
+      )
+    );
+    showToastMessage("Coleta cancelada.", "info");
+  };
+
   const getStatusColor = (status) => {
     switch (status) {
       case "Agendada":
@@ -168,14 +169,13 @@ export default function PaginaColetas() {
 
   return (
     <Flex direction="column" minH="100vh" bg="linear-gradient(135deg, #a8d995 0%, #8cc973 100%)">
-      {/* Toast notification */}
       {showToast && (
         <Box
           position="fixed"
           top="20px"
           right="20px"
           zIndex="9999"
-          bg={toastType === "error" ? "#e53e3e" : "#38a169"}
+          bg={toastType === "error" ? "#e53e3e" : toastType === "info" ? "#3182ce" : "#38a169"}
           color="white"
           p={4}
           borderRadius="md"
@@ -265,7 +265,6 @@ export default function PaginaColetas() {
       
       <Container maxW="container.lg" py={{ base: 8, md: 12 }} flex="1">
         <VStack spacing={{ base: 8, md: 10 }} align="stretch">
-          {/* Formulário de agendamento */}
           {mostrarFormulario && (
             <Box
               bg="white"
@@ -303,6 +302,7 @@ export default function PaginaColetas() {
                         value={dadosFormulario.data}
                         onChange={(e) => tratarMudancaFormulario('data', e.target.value)}
                         focusBorderColor="#48742c"
+                        color="#48742c"
                       />
                     </Box>
                     <Box>
@@ -312,6 +312,7 @@ export default function PaginaColetas() {
                         value={dadosFormulario.horario}
                         onChange={(e) => tratarMudancaFormulario('horario', e.target.value)}
                         focusBorderColor="#48742c"
+                        color="#48742c"
                       />
                     </Box>
                   </SimpleGrid>
@@ -324,6 +325,8 @@ export default function PaginaColetas() {
                       onChange={(e) => tratarMudancaFormulario('local', e.target.value)}
                       style={{
                         width: "100%",
+                        background: "white",
+                        color: "#48742c",
                         padding: "12px",
                         borderRadius: "6px",
                         border: "1px solid #e2e8f0",
@@ -346,6 +349,7 @@ export default function PaginaColetas() {
                       style={{
                         width: "100%",
                         padding: "12px",
+                        color: "#48742c",
                         borderRadius: "6px",
                         border: "1px solid #e2e8f0",
                         fontFamily: "inherit",
@@ -377,10 +381,11 @@ export default function PaginaColetas() {
                             style={{
                               marginRight: "8px",
                               accentColor: "#48742c",
-                              transform: "scale(1.2)"
+                              transform: "scale(1.2)",
+                              colorScheme: "white"
                             }}
                           />
-                          <label htmlFor={material} style={{ cursor: "pointer", fontSize: "14px" }}>
+                          <label htmlFor={material} style={{ cursor: "pointer", color:"#48742c", fontSize: "14px" }}>
                             {material}
                           </label>
                         </Box>
@@ -393,6 +398,7 @@ export default function PaginaColetas() {
                       variant="outline"
                       colorScheme="gray"
                       onClick={tratarAgendarNovaColeta}
+                      color="#48742c"
                     >
                       Cancelar
                     </Button>
@@ -553,6 +559,20 @@ export default function PaginaColetas() {
                         </Box>
                       </HStack>
                     </VStack>
+                    {['Agendada', 'Confirmada'].includes(coleta.status) && (
+                      <Flex justify="flex-end" pt={4} mt={4} borderTop="1px solid #e2e8f0">
+                        <Button
+                          colorScheme="red"
+                          variant="outline"
+                          color="#48742c"
+                          size="sm"
+                          leftIcon={<MdCancel />}
+                          onClick={() => tratarCancelarColeta(coleta.id)}
+                        >
+                          Cancelar Coleta
+                        </Button>
+                      </Flex>
+                    )}
                   </Box>
                 </Box>
               ))}
