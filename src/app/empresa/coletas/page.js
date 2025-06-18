@@ -37,7 +37,6 @@ import { FaTruck, FaBuilding, FaCheckCircle, FaClock } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-// Mock data for enterprise collections
 const coletasEmpresariais = {
   agendadas: [
     {
@@ -248,7 +247,6 @@ export default function ColetasEmpresa() {
     }
   };
   const handleAprovarSolicitacao = (id) => {
-    // Move a solicitação para processadas com status "Aprovada"
     const solicitacao = coletas.solicitacoes.find(s => s.id === id);
     if (solicitacao) {
       const solicitacaoProcessada = {

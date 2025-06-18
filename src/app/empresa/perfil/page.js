@@ -70,7 +70,6 @@ export default function PerfilEmpresa() {
   const [toastType, setToastType] = useState("");
   const [showToast, setShowToast] = useState(false);
   
-  // Estados para trocar senha
   const [mostrandoTrocarSenha, setMostrandoTrocarSenha] = useState(false);
   const [senhaAtual, setSenhaAtual] = useState("");
   const [novaSenha, setNovaSenha] = useState("");
@@ -133,7 +132,6 @@ export default function PerfilEmpresa() {
   };
 
   const handleLogout = () => {
-    // Implementar lógica de logout
     roteador.push("/login");
   };
 
@@ -152,7 +150,6 @@ export default function PerfilEmpresa() {
   };
 
   const salvarNovaSenha = () => {
-    // Validações
     if (!senhaAtual || !novaSenha || !confirmarSenha) {
       showToastMessage("Por favor, preencha todos os campos.", "error");
       return;
@@ -168,13 +165,11 @@ export default function PerfilEmpresa() {
       return;
     }
 
-    // Simular validação da senha atual (em produção, isso seria uma API call)
-    if (senhaAtual !== "senha123") { // Mock password validation
+    if (senhaAtual !== "senha123") { 
       showToastMessage("Senha atual incorreta.", "error");
       return;
     }
 
-    // Simular salvamento da nova senha
     setMostrandoTrocarSenha(false);
     setSenhaAtual("");
     setNovaSenha("");

@@ -27,7 +27,6 @@ export default function PaginaCriarConta() {
     senha: "",
     confirmarSenha: "",
     telefone: "",
-    // Campos específicos para empresa
     nomeEmpresa: "",
     cnpj: "",
     endereco: ""
@@ -45,7 +44,6 @@ export default function PaginaCriarConta() {
   const tratarSubmit = (e) => {
     e.preventDefault();
     
-    // Validações básicas
     if (!formData.nome || !formData.email || !formData.senha || !formData.confirmarSenha || !formData.telefone) {
       setMensagem("Por favor, preencha todos os campos obrigatórios.");
       return;
@@ -71,10 +69,8 @@ export default function PaginaCriarConta() {
       return;
     }
 
-    // Simular criação de conta
     setMensagem("Conta criada com sucesso!");
     
-    // Redirecionar para login
     setTimeout(() => {
       roteador.push("/");
     }, 2000);

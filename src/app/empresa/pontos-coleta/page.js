@@ -578,7 +578,7 @@ export default function PaginaPontosColetaEmpresa() {
   const [pontoEditando, setPontoEditando] = useState(null);
   const [filtros, setFiltros] = useState({
     busca: "",
-    status: "todos" // todos, ativo, inativo
+    status: "todos" 
   });
 
   const showToastMessage = (message, type) => {
@@ -618,7 +618,6 @@ export default function PaginaPontosColetaEmpresa() {
       ));
       showToastMessage("Ponto atualizado com sucesso!", "success");
     } else {
-      // Criar novo ponto
       const novoPonto = {
         ...dadosPonto,
         id: Date.now(),
@@ -648,7 +647,6 @@ export default function PaginaPontosColetaEmpresa() {
       showToastMessage(`Ponto "${ponto.nome}" excluído com sucesso!`, "error");
     }
   };
-  // Filtros aplicados diretamente
   const pontosFiltrados = pontosColeta.filter(ponto => {
     const passaBusca = filtros.busca === "" || 
       ponto.nome.toLowerCase().includes(filtros.busca.toLowerCase()) ||

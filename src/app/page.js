@@ -46,10 +46,8 @@ export default function PaginaLogin() {
       return;
     }
 
-    // Simular login
     setMensagem("Login realizado com sucesso!");
     
-    // Redirecionar para página principal
     setTimeout(() => {
       roteador.push("/home");
     }, 2000);

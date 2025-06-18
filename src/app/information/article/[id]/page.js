@@ -88,7 +88,6 @@ export default function PaginaArtigo() {
   };
 
   const tratarCompartilhar = () => {
-    // Lógica para compartilhar o artigo
     if (navigator.share) {
       navigator.share({
         title: artigo.titulo,
@@ -99,7 +98,6 @@ export default function PaginaArtigo() {
   };
 
   const tratarSalvarArtigo = () => {
-    // Lógica para salvar/favoritar o artigo
     console.log("Artigo salvo:", artigo.titulo);
   };
 
